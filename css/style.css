@@ -6,10 +6,10 @@
 
 html,
 body {
-    width: 100dvw;
     width: 100%;
-    height: 100dvh;
+    width: 100dvw;
     height: 100%;
+    height: 100dvh;
     background: var(--bg-color, #eee);
     margin: 0;
     padding: 0;
@@ -51,20 +51,6 @@ player {
     }
 }
 
-
-
-mini-cover {
-    position: absolute;
-    display: block;
-    width: 5rem;
-    height: 5rem;
-    background-image: var(--img);
-    background-size: cover;
-    background-position: center;
-    z-index: 3;
-    border-radius: 50%;
-}
-
 tape {
     display: grid;
     place-items: center;
@@ -78,6 +64,19 @@ tape {
     top: 0.5rem;
     z-index: 1;
     animation: circle 2s infinite forwards linear;
+
+    &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 5rem;
+        height: 5rem;
+        background-image: var(--img);
+        background-size: cover;
+        background-position: center;
+        z-index: 3;
+        border-radius: 50%;
+    }
 }
 
 @keyframes circle {
