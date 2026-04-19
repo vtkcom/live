@@ -42,13 +42,12 @@ player {
 
     img {
         position: relative;
-        display: block;
         width: 15rem;
         height: 15rem;
-        background-size: cover;
-        background-position: center;
-        z-index: 3;
+        object-fit: cover;
+        object-position: center;
         box-shadow: 0 0 30px -10px hsl(0 0 0 / 0.3);
+        z-index: 3;
     }
 }
 
