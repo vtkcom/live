@@ -24,6 +24,12 @@ body {
     padding: 20px;
 }
 
+@media (orientation: landscape) {
+  body {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 player {
     position: relative;
     display: block;
