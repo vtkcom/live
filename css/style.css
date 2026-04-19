@@ -5,7 +5,8 @@
     -45deg,
     var(--bg-color),
     var(--bg-two-color),
-    var(--bg-three-color)
+    var(--bg-three-color),
+    var(--bg-four-color)
   );
 }
 
@@ -33,9 +34,8 @@ body {
   gap: 3rem;
   padding: 20px;
   background: var(--gradient);
-  background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
-  transition: background 1s ease;
+  background-size: 200% 200%;
+  animation: gradientShift 8s linear infinite;
 }
 
 @media (orientation: landscape) and (pointer: coarse) {
@@ -120,14 +120,13 @@ track-title {
 
 control {
   background: var(--gradient);
-  background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
+  background-size: 200% 200%;
+  animation: gradientShift 8s linear infinite;
   display: grid;
   place-items: center;
   z-index: 4;
   position: fixed;
   inset: 0;
-  transition: background 0.3s ease;
 }
 
 control::before {

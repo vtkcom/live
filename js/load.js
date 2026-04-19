@@ -20,7 +20,7 @@ export async function loadInfo() {
       );
       const base64 = btoa(binary);
       const img = `data:${data.currentTrack.image.mime};base64,${base64}`;
-      const colors = await getFastColors(img, 3);
+      const colors = await getFastColors(img, 4);
       const blob = base64ToBlob(img, data.currentTrack.image.mime);
       const imageUrl = URL.createObjectURL(blob);
 
@@ -35,6 +35,10 @@ export async function loadInfo() {
       document.documentElement.style.setProperty(
         "--bg-three-color",
         `rgb(${colors[2].rgb.join(", ")})`,
+      );
+      document.documentElement.style.setProperty(
+        "--bg-four-color",
+        `rgb(${colors[3].rgb.join(", ")})`,
       );
       await outAnimation();
       document.querySelector("player img").src = imageUrl;
@@ -86,7 +90,6 @@ async function outAnimation() {
     trackBlock.style.animationName = "outBlock";
     cover.style.animationName = "outCover";
     disk.style.animationName = "outDisc";
-    disk.style.animationDuration = "0.3";
 
     trackBlock.addEventListener("animationend", res);
   });
@@ -101,11 +104,9 @@ async function inAnimation() {
     trackBlock.style.animationName = "inBlock";
     cover.style.animationName = "inCover";
     disk.style.animationName = "inDisc";
-    disk.style.animationDuration = "0.3";
 
     trackBlock.addEventListener("animationend", () => {
       disk.style.animationName = "circle";
-      disk.style.animationDuration = "2";
       res();
     });
   });
