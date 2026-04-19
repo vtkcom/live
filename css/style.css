@@ -1,57 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    width: 100%;
-    width: 100dvw;
-    height: 100%;
-    height: 100dvh;
-    background: var(--bg-color, #eee);
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    transition: all 0.3s ease;
+  width: 100%;
+  width: 100dvw;
+  height: 100%;
+  height: 100dvh;
+  background: var(--bg-color, #eee);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
 body {
-    display: grid;
-    place-content: center;
-    place-items: center;
-    gap: 3rem;
-    padding: 20px;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  gap: 3rem;
+  padding: 20px;
 }
 
 @media (orientation: landscape) and (pointer: coarse) {
-    body {
-        grid-template-columns: 1fr 1fr;
-    }
+  body {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 player {
+  position: relative;
+  display: block;
+  width: 15rem;
+  height: 15rem;
+  left: -2rem;
+
+  img {
     position: relative;
-    display: block;
     width: 15rem;
     height: 15rem;
-    left: -2rem;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 0 30px -10px hsl(0 0 0 / 0.3);
+    z-index: 3;
+  }
 
-    img {
-        position: relative;
-        width: 15rem;
-        height: 15rem;
-        object-fit: cover;
-        object-position: center;
-        box-shadow: 0 0 30px -10px hsl(0 0 0 / 0.3);
-        z-index: 3;
-    }
-}
-
-tape {
+  div {
     display: grid;
     place-items: center;
     width: 14rem;
@@ -66,143 +65,141 @@ tape {
     animation: circle 2s infinite forwards linear;
 
     &::after {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 5rem;
-        height: 5rem;
-        background-image: var(--img);
-        background-size: cover;
-        background-position: center;
-        z-index: 3;
-        border-radius: 50%;
+      content: "";
+      position: absolute;
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      background-image: var(--img);
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
     }
+  }
 }
 
 @keyframes circle {
-    from {
-        transform: rotate(0deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
 
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 track-info {
-    color: #fff;
-    filter: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
-    display: grid;
-    place-items: center;
-    gap: 0.5rem;
+  color: #fff;
+  filter: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
 }
 
-track-info>div {
-    text-align: center;
+track-info > div {
+  text-align: center;
 }
 
 track-artist,
 track-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 control {
-    background: linear-gradient(-45deg,
-            #ff0844,
-            #ffb199,
-            #00b4db,
-            #0083b0);
-    background-size: 400% 400%;
-    animation: gradientShift 8s ease infinite;
-    display: grid;
-    place-items: center;
-    z-index: 4;
-    position: fixed;
-    inset: 0;
+  background: linear-gradient(-45deg, #ff0844, #ffb199, #00b4db, #0083b0);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  display: grid;
+  place-items: center;
+  z-index: 4;
+  position: fixed;
+  inset: 0;
 }
 
 control::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center,
-            transparent 0%,
-            rgba(0, 0, 0, 0.2) 100%);
-    pointer-events: none;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  pointer-events: none;
 }
 
 @keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
 
-    50% {
-        background-position: 100% 50%;
-    }
+  50% {
+    background-position: 100% 50%;
+  }
 
-    100% {
-        background-position: 0% 50%;
-    }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 control-button {
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    color: hsl(0, 0%, 100%);
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: hsl(0, 0%, 100%);
 
-    svg {
-        width: 10rem;
-        height: 10rem;
-    }
+  svg {
+    width: 10rem;
+    height: 10rem;
+  }
 }
 
 volume input {
-    width: 100%;
-    height: 2px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: hsl(0, 0%, 100%);
-    border-radius: 0.2rem;
-    outline: none;
-    filter: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
+  width: 100%;
+  height: 2px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: hsl(0, 0%, 100%);
+  border-radius: 0.2rem;
+  outline: none;
+  filter: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
 }
 
 volume input::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    background: hsl(0, 0%, 100%);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    transition: 0.1s;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: hsl(0, 0%, 100%);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.1s;
 }
 
 volume input::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 volume input::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    background: hsl(0, 0%, 100%);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
+  width: 18px;
+  height: 18px;
+  background: hsl(0, 0%, 100%);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
 }
 
 volume {
-    width: 15rem;
+  width: 15rem;
 }
 
 track-block {
-    display: grid;
-    gap: 1rem;
-    place-items: center;
+  display: grid;
+  gap: 1rem;
+  place-items: center;
 }
