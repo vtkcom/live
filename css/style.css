@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color, #eee);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    gap: 3rem;
+    padding: 20px;
+}
+
+player {
+    position: relative;
+    display: block;
+    left: -5rem;
+    width: 40rem;
+    height: 40rem;
+}
+
+cover {
+    position: relative;
+    display: block;
+    width: 40rem;
+    height: 40rem;
+    background-image: var(--img);
+    background-color: #fff;
+    background-size: cover;
+    background-position: center;
+    z-index: 3;
+    box-shadow: 0 0 30px -10px hsl(0 0 0 / 0.3);
+}
+
+mini-cover {
+    position: absolute;
+    display: block;
+    width: 15rem;
+    height: 15rem;
+    background-image: var(--img);
+    background-size: cover;
+    background-position: center;
+    z-index: 3;
+    border-radius: 50%;
+}
+
+tape {
+    display: grid;
+    place-items: center;
+    width: 39rem;
+    height: 39rem;
+    background-image: url(../img/tape.png);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0.5rem;
+    right: -15rem;
+    z-index: 1;
+    animation: circle 2s infinite forwards linear;
+}
+
+
+@media (min-width: 400px) {
+    player {
+        width: 15rem;
+        height: 15rem;
+        left: -2rem;
+    }
+
+    cover {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    mini-cover {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    tape {
+        width: 14rem;
+        height: 14rem;
+        right: -5rem;
+    }
+}
+
+
+@media (min-width: 1000px) {
+    player {
+        width: 40rem;
+        height: 40rem;
+        left: -5rem;
+    }
+
+    cover {
+        width: 40rem;
+        height: 40rem;
+    }
+
+    mini-cover {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    tape {
+        width: 39rem;
+        height: 39rem;
+        right: -15rem;
+    }
+}
+
+
+@media (min-width: 1400px) {
+    player {
+        width: 30rem;
+        height: 30rem;
+        left: -5rem;
+    }
+
+    cover {
+        width: 30rem;
+        height: 30rem;
+    }
+
+    mini-cover {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    tape {
+        width: 29rem;
+        height: 29rem;
+        right: -12rem;
+    }
+}
+
+@keyframes circle {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+track-info {
+    color: #fff;
+    filter: drop-shadow(0 0 1px hsla(0 0 0 / 0.8));
+    display: grid;
+    place-items: center;
+    gap: 0.5rem;
+}
+
+track-info>div {
+    text-align: center;
+}
+
+track-artist,
+track-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+control {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(-45deg,
+            #ee7752,
+            #e73c7e,
+            #23a6d5,
+            #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: grid;
+    place-items: center;
+    z-index: 4;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    color: #fff;
+
+    svg {
+        width: 10rem;
+        height: 10rem;
+    }
+}
