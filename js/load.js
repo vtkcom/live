@@ -26,7 +26,8 @@ export async function loadInfo() {
       document.querySelector("player img").src = imageUrl;
       document.documentElement.style.setProperty("--img", `url(${imageUrl})`);
       document.documentElement.style.setProperty("--bg-color", colors[0].hex);
-      document.documentElement.style.setProperty("--text-color", colors[1].hex);
+      document.documentElement.style.setProperty("--bg-two-color", colors[1].hex);
+      document.documentElement.style.setProperty("--bg-three-color", colors[2].hex);
       document.documentElement.style.setProperty(
         "--secondary-color",
         colors[2].hex,
@@ -36,13 +37,13 @@ export async function loadInfo() {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: data.currentTrack.title,
           artist: data.currentTrack.artist,
+          album: data.currentTrack.album,
           artwork: [
             {
               src: imageUrl,
               type: "image/jpeg",
             },
           ],
-          album: data.currentTrack.album,
         });
       }
     }
