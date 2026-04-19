@@ -2,6 +2,7 @@ import { base64ToBlob } from "./base642blob.js";
 import { getFastColors } from "./color.js";
 
 let currentTrack = null;
+let isLoading = true;
 
 export async function loadInfo() {
   const res = await fetch("https://radio.laapl.ru/getState");
@@ -23,7 +24,6 @@ export async function loadInfo() {
       const blob = base64ToBlob(img, data.currentTrack.image.mime);
       const imageUrl = URL.createObjectURL(blob);
 
-      
       document.documentElement.style.setProperty(
         "--bg-color",
         `rgb(${colors[0].rgb.join(", ")})`,
@@ -54,6 +54,10 @@ export async function loadInfo() {
         });
       }
 
+      if (isLoading) {
+        isLoading = false;
+        document.querySelector("loader").style.visibility = "hidden";
+      }
     }
 
     document.querySelector("track-title").textContent =

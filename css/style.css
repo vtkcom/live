@@ -74,7 +74,7 @@ player {
     position: absolute;
     top: 0.5rem;
     z-index: 1;
-    animation: circle 1s infinite forwards linear;
+    animation: circle 1s infinite linear;
 
     &::after {
       content: "";
@@ -274,5 +274,26 @@ track-block {
   }
   to {
     right: -5rem;
+  }
+}
+
+loader {
+  position: fixed;
+  inset: 0;
+  background: hsla(0, 0%, 0%, 0.7);
+  backdrop-filter: blur(25px);
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  transition: all 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border-top: 1px solid hsl(0, 0%, 100%);
+    animation: circle 0.5s infinite linear;
   }
 }
