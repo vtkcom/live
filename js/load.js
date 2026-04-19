@@ -34,7 +34,6 @@ export async function loadInfo() {
         const blob = base64ToBlob(img, data.currentTrack.image.mime);
         const imageUrl = URL.createObjectURL(blob);
         
-        // Устанавливаем метаданные трансляции
         navigator.mediaSession.metadata = new MediaMetadata({
           title: data.currentTrack.title,
           artist: data.currentTrack.artist,
@@ -44,6 +43,7 @@ export async function loadInfo() {
               type: "image/jpeg",
             },
           ],
+          album: data.currentTrack.album
         });
       }
     }
