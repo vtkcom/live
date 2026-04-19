@@ -27,16 +27,16 @@ body {
 player {
     position: relative;
     display: block;
-    left: -5rem;
-    width: 40rem;
-    height: 40rem;
+    width: 15rem;
+    height: 15rem;
+    left: -2rem;
 }
 
 cover {
     position: relative;
     display: block;
-    width: 40rem;
-    height: 40rem;
+    width: 15rem;
+    height: 15rem;
     background-image: var(--img);
     background-color: #fff;
     background-size: cover;
@@ -48,8 +48,8 @@ cover {
 mini-cover {
     position: absolute;
     display: block;
-    width: 15rem;
-    height: 15rem;
+    width: 5rem;
+    height: 5rem;
     background-image: var(--img);
     background-size: cover;
     background-position: center;
@@ -60,14 +60,14 @@ mini-cover {
 tape {
     display: grid;
     place-items: center;
-    width: 39rem;
-    height: 39rem;
+    width: 14rem;
+    height: 14rem;
+    right: -5rem;
     background-image: url(../img/tape.png);
     background-size: cover;
     background-position: center;
     position: absolute;
     top: 0.5rem;
-    right: -15rem;
     z-index: 1;
     animation: circle 2s infinite forwards linear;
 }
@@ -176,11 +176,11 @@ track-title {
 }
 
 control {
-    background: linear-gradient(-45deg, 
-        #ff0844, 
-        #ffb199, 
-        #00b4db, 
-        #0083b0);
+    background: linear-gradient(-45deg,
+            #ff0844,
+            #ffb199,
+            #00b4db,
+            #0083b0);
     background-size: 400% 400%;
     animation: gradientShift 8s ease infinite;
     display: grid;
@@ -197,9 +197,9 @@ control::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, 
-        transparent 0%, 
-        rgba(0, 0, 0, 0.2) 100%);
+    background: radial-gradient(circle at center,
+            transparent 0%,
+            rgba(0, 0, 0, 0.2) 100%);
     pointer-events: none;
 }
 
