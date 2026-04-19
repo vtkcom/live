@@ -3,7 +3,7 @@ import { getFastColors } from "./color.js";
 let currentTrack = null
 
 export async function loadInfo() {
-  const res = await fetch("//radio.laapl.ru/getState");
+  const res = await fetch("https://radio.laapl.ru/getState");
   const data = await res.json();
 
   if (currentTrack !== `${data.currentTrack.artist} - ${data.currentTrack.title} - ${data.currentTrack.year}`) {
