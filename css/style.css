@@ -51,7 +51,6 @@ player {
   height: 15rem;
   left: -2rem;
   animation-duration: 1s;
-  animation-timing-function: ease;
 
   img {
     position: relative;
@@ -218,27 +217,26 @@ track-block {
   gap: 1rem;
   place-items: center;
   animation-duration: 1s;
-  animation-timing-function: ease;
 }
 
 @keyframes outBlock {
   from {
-    transform: translate(0, 0), scale(1);
+    transform: translate(0, 0);;
     filter: opacity(1);
   }
   to {
-    transform: translate(0, -15rem), scale(0.5);
+    transform: translate(0, -3rem);
     filter: opacity(0);
   }
 }
 
 @keyframes inBlock {
   from {
-    transform: translate(0, -15rem) scale(0.5);
+    transform: translate(0, -3rem);
     filter: opacity(0);
   }
   to {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0);
     filter: opacity(1);
   }
 }
