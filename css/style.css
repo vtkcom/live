@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
 
 :root {
-    --gradient: linear-gradient(-45deg, var(--bg-color), var(--bg-two-color), var(--bg-three-color));
+  --gradient: linear-gradient(
+    -45deg,
+    var(--bg-color),
+    var(--bg-two-color),
+    var(--bg-three-color)
+  );
 }
 
 * {
@@ -19,7 +24,6 @@ body {
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  transition: background 0.3s ease;
 }
 
 body {
@@ -31,6 +35,7 @@ body {
   background: var(--gradient);
   background-size: 400% 400%;
   animation: gradientShift 8s ease infinite;
+  transition: background 1s ease;
 }
 
 @media (orientation: landscape) and (pointer: coarse) {
@@ -45,6 +50,8 @@ player {
   width: 15rem;
   height: 15rem;
   left: -2rem;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
 
   img {
     position: relative;
@@ -68,7 +75,7 @@ player {
     position: absolute;
     top: 0.5rem;
     z-index: 1;
-    animation: circle 2s infinite forwards linear;
+    animation: circle 1s infinite forwards linear;
 
     &::after {
       content: "";
@@ -121,6 +128,7 @@ control {
   z-index: 4;
   position: fixed;
   inset: 0;
+  transition: background 0.3s ease;
 }
 
 control::before {
@@ -158,6 +166,7 @@ control-button {
   padding: 0;
   margin: 0;
   color: hsl(0, 0%, 100%);
+  filter: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
 
   svg {
     width: 10rem;
@@ -208,4 +217,64 @@ track-block {
   display: grid;
   gap: 1rem;
   place-items: center;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes outBlock {
+  from {
+    transform: translate(0, 0), scale(1);
+    filter: opacity(1);
+  }
+  to {
+    transform: translate(0, -15rem), scale(0.5);
+    filter: opacity(0);
+  }
+}
+
+@keyframes inBlock {
+  from {
+    transform: translate(0, -15rem) scale(0.5);
+    filter: opacity(0);
+  }
+  to {
+    transform: translate(0, 0) scale(1);
+    filter: opacity(1);
+  }
+}
+
+@keyframes outCover {
+  from {
+    left: -2rem;
+  }
+  to {
+    left: 0rem;
+  }
+}
+
+@keyframes inCover {
+  from {
+    left: 0rem;
+  }
+  to {
+    left: -2rem;
+  }
+}
+
+@keyframes outDisc {
+  from {
+    right: -5rem;
+  }
+  to {
+    right: 1rem;
+  }
+}
+
+@keyframes inDisc {
+  from {
+    right: 1rem;
+  }
+  to {
+    right: -5rem;
+  }
 }

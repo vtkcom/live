@@ -11,6 +11,7 @@ export async function loadInfo() {
     currentTrack !==
     `${data.currentTrack.artist} - ${data.currentTrack.title} - ${data.currentTrack.year}`
   ) {
+    await outAnimation();
     if (data.currentTrack.image) {
       const bytes = new Uint8Array(data.currentTrack.image.imageBuffer.data);
       const binary = bytes.reduce(
@@ -25,12 +26,17 @@ export async function loadInfo() {
 
       document.querySelector("player img").src = imageUrl;
       document.documentElement.style.setProperty("--img", `url(${imageUrl})`);
-      document.documentElement.style.setProperty("--bg-color", colors[0].hex);
-      document.documentElement.style.setProperty("--bg-two-color", colors[1].hex);
-      document.documentElement.style.setProperty("--bg-three-color", colors[2].hex);
       document.documentElement.style.setProperty(
-        "--secondary-color",
-        colors[2].hex,
+        "--bg-color",
+        `rgb(${colors[0].rgb.join(", ")})`,
+      );
+      document.documentElement.style.setProperty(
+        "--bg-two-color",
+        `rgb(${colors[1].rgb.join(", ")})`,
+      );
+      document.documentElement.style.setProperty(
+        "--bg-three-color",
+        `rgb(${colors[2].rgb.join(", ")})`,
       );
 
       if ("mediaSession" in navigator) {
@@ -59,6 +65,42 @@ export async function loadInfo() {
 
     document.title = `${data.currentTrack.artist} - ${data.currentTrack.title}`;
 
+    await inAnimation();
+
     currentTrack = `${data.currentTrack.artist} - ${data.currentTrack.title} - ${data.currentTrack.year}`;
   }
+}
+
+async function outAnimation() {
+  return new Promise((res, rej) => {
+    const cover = document.querySelector("player");
+    const disk = document.querySelector("player div");
+    const trackBlock = document.querySelector("track-block");
+
+    trackBlock.style.animationName = "outBlock";
+    cover.style.animationName = "outCover";
+    disk.style.animationName = "outDisc";
+    disk.style.animationDuration = "0.3";
+
+    trackBlock.addEventListener("animationend", res);
+  });
+}
+
+async function inAnimation() {
+  return new Promise((res, rej) => {
+    const cover = document.querySelector("player");
+    const disk = document.querySelector("player div");
+    const trackBlock = document.querySelector("track-block");
+
+    trackBlock.style.animationName = "inBlock";
+    cover.style.animationName = "inCover";
+    disk.style.animationName = "inDisc";
+    disk.style.animationDuration = "0.3";
+
+    trackBlock.addEventListener("animationend", () => {
+      disk.style.animationName = "circle";
+      disk.style.animationDuration = "2";
+      res();
+    });
+  });
 }

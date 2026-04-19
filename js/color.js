@@ -35,12 +35,6 @@ export async function getFastColors(imageUrl, colorCount = 5) {
         .slice(0, colorCount)
         .map(([color, count]) => ({
           rgb: color.split(",").map(Number),
-          hex:
-            "#" +
-            color
-              .split(",")
-              .map((c) => parseInt(c).toString(16).padStart(2, "0"))
-              .join(""),
         }));
 
       resolve(sorted);
