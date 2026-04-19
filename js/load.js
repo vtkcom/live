@@ -15,6 +15,7 @@ export async function loadInfo() {
       const colors = await getFastColors(img, 3);
 
 
+      document.querySelector('player img').src = img;
       document.documentElement.style.setProperty('--img', `url(${img})`);
       document.documentElement.style.setProperty('--bg-color', colors[0].hex);
       document.documentElement.style.setProperty('--text-color', colors[1].hex);
