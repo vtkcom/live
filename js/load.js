@@ -20,9 +20,11 @@ export async function loadInfo() {
       const base64 = btoa(binary);
       const img = `data:${data.currentTrack.image.mime};base64,${base64}`;
       const colors = await getFastColors(img, 3);
+      const blob = base64ToBlob(img, data.currentTrack.image.mime);
+      const imageUrl = URL.createObjectURL(blob);
 
-      document.querySelector("player img").src = img;
-      document.documentElement.style.setProperty("--img", `url(${img})`);
+      document.querySelector("player img").src = imageUrl;
+      document.documentElement.style.setProperty("--img", `url(${imageUrl})`);
       document.documentElement.style.setProperty("--bg-color", colors[0].hex);
       document.documentElement.style.setProperty("--text-color", colors[1].hex);
       document.documentElement.style.setProperty(
@@ -31,9 +33,6 @@ export async function loadInfo() {
       );
 
       if ("mediaSession" in navigator) {
-        const blob = base64ToBlob(img, data.currentTrack.image.mime);
-        const imageUrl = URL.createObjectURL(blob);
-        
         navigator.mediaSession.metadata = new MediaMetadata({
           title: data.currentTrack.title,
           artist: data.currentTrack.artist,
@@ -43,7 +42,7 @@ export async function loadInfo() {
               type: "image/jpeg",
             },
           ],
-          album: data.currentTrack.album
+          album: data.currentTrack.album,
         });
       }
     }
