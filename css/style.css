@@ -46,6 +46,13 @@ body {
   background: var(--gradient);
   background-size: 200% 200%;
   animation: gradientShift 15s linear infinite;
+
+  &::before {
+    content: '';
+    background-color: hsla(0, 0%, 0%, 0.2);
+    position: absolute;
+    inset: 0;
+  }
 }
 
 @media (orientation: landscape) and (pointer: coarse) {
