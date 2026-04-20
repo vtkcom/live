@@ -1,7 +1,7 @@
 control {
   background: var(--gradient);
   background-size: 200% 200%;
-  animation: gradientShift 15s linear infinite;
+  animation: gradientShift 60s linear infinite;
   display: grid;
   place-items: center;
   position: fixed;
