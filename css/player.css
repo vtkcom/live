@@ -27,7 +27,6 @@ player {
     position: absolute;
     top: 0.5rem;
     z-index: 1;
-    animation: circle 2s infinite linear;
 
     &::after {
       content: "";
