@@ -20,5 +20,4 @@ track-block {
   display: grid;
   gap: 1rem;
   place-items: center;
-  animation-duration: 1s;
 }

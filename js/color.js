@@ -1,4 +1,4 @@
-export async function getFastColors(imageUrl, colorCount = 5) {
+export async function updateFastColors(imageUrl, colorCount = 5) {
   const img = new Image();
   img.crossOrigin = "Anonymous";
 
@@ -7,7 +7,6 @@ export async function getFastColors(imageUrl, colorCount = 5) {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
 
-      // Уменьшаем размер для скорости
       const size = 100;
       canvas.width = size;
       canvas.height = size;
@@ -17,14 +16,12 @@ export async function getFastColors(imageUrl, colorCount = 5) {
 
       const colorMap = new Map();
 
-      // Сэмплируем каждый 4-й пиксель для скорости
       for (let i = 0; i < imageData.data.length; i += 16) {
         const r = imageData.data[i];
         const g = imageData.data[i + 1];
         const b = imageData.data[i + 2];
 
-        if (r + g + b > 30) {
-          // игнорируем почти черные
+        if (r + g + b > 30 && r + g + b < 580) {
           const key = `${Math.round(r / 10) * 10},${Math.round(g / 10) * 10},${Math.round(b / 10) * 10}`;
           colorMap.set(key, (colorMap.get(key) || 0) + 1);
         }
@@ -37,7 +34,24 @@ export async function getFastColors(imageUrl, colorCount = 5) {
           rgb: color.split(",").map(Number),
         }));
 
-      resolve(sorted);
+      document.documentElement.style.setProperty(
+        "--bg-color",
+        `rgb(${sorted[0].rgb.join(", ")})`,
+      );
+      document.documentElement.style.setProperty(
+        "--bg-two-color",
+        `rgb(${sorted[1].rgb.join(", ")})`,
+      );
+      document.documentElement.style.setProperty(
+        "--bg-three-color",
+        `rgb(${sorted[2].rgb.join(", ")})`,
+      );
+      document.documentElement.style.setProperty(
+        "--bg-four-color",
+        `rgb(${sorted[3].rgb.join(", ")})`,
+      );
+
+      resolve();
     };
 
     img.src = imageUrl;
