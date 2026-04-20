@@ -1,6 +1,7 @@
 import { inAnimation, outAnimation } from "./animate.js";
-import { base64ToBlob } from "./base642blob.js";
+import { bufferToUrl } from "./buffer2url.js";
 import { updateFastColors } from "./color.js";
+import { updateMediaSession } from "./mediasession.js";
 import { updateText } from "./text.js";
 
 let currentTrack = null;
@@ -13,35 +14,15 @@ export async function loadInfo() {
 
   if (currentTrack !== title) {
     if (data.currentTrack.image) {
-      const bytes = new Uint8Array(data.currentTrack.image.imageBuffer.data);
-      const binary = bytes.reduce(
-        (data, byte) => data + String.fromCharCode(byte),
-        "",
-      );
-      const base64 = btoa(binary);
-      const img = `data:${data.currentTrack.image.mime};base64,${base64}`;
-      const blob = base64ToBlob(img, data.currentTrack.image.mime);
-      const imageUrl = URL.createObjectURL(blob);
+      const imageUrl = bufferToUrl(data);
 
-      await updateFastColors(img);
+      await updateFastColors(imageUrl);
       await outAnimation();
 
       document.querySelector("player img").src = imageUrl;
       document.documentElement.style.setProperty("--img", `url(${imageUrl})`);
 
-      if ("mediaSession" in navigator) {
-        navigator.mediaSession.metadata = new MediaMetadata({
-          title: data.currentTrack.title,
-          artist: data.currentTrack.artist,
-          album: data.currentTrack.album,
-          artwork: [
-            {
-              src: imageUrl,
-              type: data.currentTrack.image.mime,
-            },
-          ],
-        });
-      }
+      updateMediaSession(data, imageUrl);
     }
 
     updateText(data);
@@ -55,4 +36,3 @@ export async function loadInfo() {
     currentTrack = title;
   }
 }
-
