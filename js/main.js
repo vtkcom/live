@@ -5,6 +5,8 @@ const audio = document.querySelector("audio");
 const volume = document.querySelector("volume input");
 
 button.addEventListener("click", () => {
+  audio.src = "";
+  audio.src = "https://radio.laapl.ru/stream";
   audio.play();
 });
 
