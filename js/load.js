@@ -85,11 +85,11 @@ async function outAnimation() {
   return new Promise((res, rej) => {
     const cover = document.querySelector("player");
     const disk = document.querySelector("player div");
-    const trackBlock = document.querySelector("track-block");
+    const trackBlock = document.querySelector("track-info");
 
-    trackBlock.style.animationName = "outBlock";
-    cover.style.animationName = "outCover";
-    disk.style.animationName = "outDisc";
+    trackBlock.style.animation = "outBlock 0.5s";
+    cover.style.animation = "outCover 0.5s";
+    disk.style.animation = "outDisc 0.5s";
 
     trackBlock.addEventListener("animationend", res);
   });
@@ -99,14 +99,14 @@ async function inAnimation() {
   return new Promise((res, rej) => {
     const cover = document.querySelector("player");
     const disk = document.querySelector("player div");
-    const trackBlock = document.querySelector("track-block");
+    const trackBlock = document.querySelector("track-info");
 
-    trackBlock.style.animationName = "inBlock";
-    cover.style.animationName = "inCover";
-    disk.style.animationName = "inDisc";
+    trackBlock.style.animation = "inBlock  0.5s";
+    cover.style.animation = "inCover 0.5s";
+    disk.style.animation = "inDisc 0.5s";
 
     trackBlock.addEventListener("animationend", () => {
-      disk.style.animationName = "circle";
+      disk.style.animation = "circle 2s infinite linear";
       res();
     });
   });

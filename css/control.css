@@ -1,0 +1,24 @@
+control {
+  background: var(--gradient);
+  background-size: 200% 200%;
+  animation: gradientShift 8s linear infinite;
+  display: grid;
+  place-items: center;
+  z-index: 4;
+  position: fixed;
+  inset: 0;
+}
+
+control-button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: var(--color);
+  filter: var(--drop-shadow);
+
+  svg {
+    width: 10rem;
+    height: 10rem;
+  }
+}

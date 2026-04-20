@@ -1,0 +1,81 @@
+@keyframes outBlock {
+  from {
+    transform: translate(0, 0);
+    filter: opacity(1);
+  }
+  to {
+    transform: translate(0, -3rem);
+    filter: opacity(0);
+  }
+}
+
+@keyframes inBlock {
+  from {
+    transform: translate(0, -3rem);
+    filter: opacity(0);
+  }
+  to {
+    transform: translate(0, 0);
+    filter: opacity(1);
+  }
+}
+
+@keyframes outCover {
+  from {
+    left: -2rem;
+  }
+  to {
+    left: 0rem;
+  }
+}
+
+@keyframes inCover {
+  from {
+    left: 0rem;
+  }
+  to {
+    left: -2rem;
+  }
+}
+
+@keyframes outDisc {
+  from {
+    right: -5rem;
+  }
+  to {
+    right: 1rem;
+  }
+}
+
+@keyframes inDisc {
+  from {
+    right: 1rem;
+  }
+  to {
+    right: -5rem;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes circle {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

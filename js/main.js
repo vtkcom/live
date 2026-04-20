@@ -6,11 +6,18 @@ const volume = document.querySelector("volume input");
 
 button.addEventListener("click", () => {
   audio.play();
-  document.querySelector("control").style.display = "none";
 });
 
 volume.addEventListener("input", (e) => {
   audio.volume = e.target.value / 100;
+});
+
+audio.addEventListener("pause", (e) => {
+  document.querySelector("control").style.display = null;
+});
+
+audio.addEventListener("play", (e) => {
+  document.querySelector("control").style.display = "none";
 });
 
 loadInfo();

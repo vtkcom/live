@@ -1,0 +1,44 @@
+player {
+  position: relative;
+  display: block;
+  width: 15rem;
+  height: 15rem;
+  left: -2rem;
+
+  img {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 0 30px -10px hsl(0 0 0 / 0.3);
+    z-index: 3;
+  }
+
+  div {
+    display: grid;
+    place-items: center;
+    width: 14rem;
+    height: 14rem;
+    right: -5rem;
+    background-image: url(../img/tape.png);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0.5rem;
+    z-index: 1;
+    animation: circle 2s infinite linear;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      background-image: var(--img);
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+track-info {
+  color: #fff;
+  filter: var(--drop-shadow);
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+}
+
+track-info > div {
+  text-align: center;
+}
+
+track-artist,
+track-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+track-block {
+  display: grid;
+  gap: 1rem;
+  place-items: center;
+  animation-duration: 1s;
+}

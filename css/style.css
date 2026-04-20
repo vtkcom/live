@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+@import url("./animate.css");
+@import url("./loader.css");
+@import url("./control.css");
+@import url("./volume.css");
+@import url("./player.css");
+@import url("./track.css");
 
 :root {
+  --color: hsl(0, 0%, 100%);
+  --drop-shadow: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
   --gradient: linear-gradient(
     -45deg,
     var(--bg-color),
@@ -17,8 +25,10 @@
 html,
 body {
   width: 100%;
+  width: 100vh;
   width: 100dvw;
   height: 100%;
+  height: 100vh;
   height: 100dvh;
   margin: 0;
   padding: 0;
@@ -39,259 +49,10 @@ body {
 }
 
 @media (orientation: landscape) and (pointer: coarse) {
+  html {
+    font-size: 15px;
+  }
   body {
     grid-template-columns: 1fr 1fr;
-  }
-}
-
-player {
-  position: relative;
-  display: block;
-  width: 15rem;
-  height: 15rem;
-  left: -2rem;
-  animation-duration: 1s;
-
-  img {
-    position: relative;
-    width: 15rem;
-    height: 15rem;
-    object-fit: cover;
-    object-position: center;
-    box-shadow: 0 0 30px -10px hsl(0 0 0 / 0.3);
-    z-index: 3;
-  }
-
-  div {
-    display: grid;
-    place-items: center;
-    width: 14rem;
-    height: 14rem;
-    right: -5rem;
-    background-image: url(../img/tape.png);
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0.5rem;
-    z-index: 1;
-    animation: circle 1s infinite linear;
-
-    &::after {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 5rem;
-      height: 5rem;
-      background-image: var(--img);
-      background-size: cover;
-      background-position: center;
-      border-radius: 50%;
-    }
-  }
-}
-
-@keyframes circle {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-track-info {
-  color: #fff;
-  filter: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
-  display: grid;
-  place-items: center;
-  gap: 0.5rem;
-}
-
-track-info > div {
-  text-align: center;
-}
-
-track-artist,
-track-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-control {
-  background: var(--gradient);
-  background-size: 200% 200%;
-  animation: gradientShift 8s linear infinite;
-  display: grid;
-  place-items: center;
-  z-index: 4;
-  position: fixed;
-  inset: 0;
-}
-
-control::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at center,
-    transparent 0%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
-  pointer-events: none;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-control-button {
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  color: hsl(0, 0%, 100%);
-  filter: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
-
-  svg {
-    width: 10rem;
-    height: 10rem;
-  }
-}
-
-volume input {
-  width: 100%;
-  height: 2px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: hsl(0, 0%, 100%);
-  border-radius: 0.2rem;
-  outline: none;
-  filter: drop-shadow(0 0 2px hsla(0 0 0 / 0.5));
-}
-
-volume input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  background: hsl(0, 0%, 100%);
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  transition: 0.1s;
-}
-
-volume input::-webkit-slider-thumb:active {
-  transform: scale(1.2);
-}
-
-volume input::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  background: hsl(0, 0%, 100%);
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-}
-
-volume {
-  width: 15rem;
-}
-
-track-block {
-  display: grid;
-  gap: 1rem;
-  place-items: center;
-  animation-duration: 1s;
-}
-
-@keyframes outBlock {
-  from {
-    transform: translate(0, 0);;
-    filter: opacity(1);
-  }
-  to {
-    transform: translate(0, -3rem);
-    filter: opacity(0);
-  }
-}
-
-@keyframes inBlock {
-  from {
-    transform: translate(0, -3rem);
-    filter: opacity(0);
-  }
-  to {
-    transform: translate(0, 0);
-    filter: opacity(1);
-  }
-}
-
-@keyframes outCover {
-  from {
-    left: -2rem;
-  }
-  to {
-    left: 0rem;
-  }
-}
-
-@keyframes inCover {
-  from {
-    left: 0rem;
-  }
-  to {
-    left: -2rem;
-  }
-}
-
-@keyframes outDisc {
-  from {
-    right: -5rem;
-  }
-  to {
-    right: 1rem;
-  }
-}
-
-@keyframes inDisc {
-  from {
-    right: 1rem;
-  }
-  to {
-    right: -5rem;
-  }
-}
-
-loader {
-  position: fixed;
-  inset: 0;
-  background: hsla(0, 0%, 0%, 1);
-  z-index: 5;
-  display: grid;
-  place-items: center;
-  transition: all 0.3s ease;
-
-  &::after {
-    content: '';
-    position: absolute;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    border-top: 1px solid hsl(0, 0%, 100%);
-    animation: circle 0.5s infinite linear;
   }
 }
