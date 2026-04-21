@@ -2,7 +2,7 @@
   "name": "Radio",
   "short_name": "Radio",
   "start_url": ".",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#000000",
   "description": "Radio undeground",
   "icons": [
