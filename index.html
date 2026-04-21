@@ -1,8 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <!-- Для Android: делаем прозрачным -->
+    <meta name="theme-color" content="transparent" />
+    <!-- Для iOS: включаем полноэкранный режим и прозрачный статус-бар -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <link rel="manifest" href="./manifest.json" />
     <link rel="icon" href="./img/favicon.png" type="image/png" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -50,6 +61,6 @@
         </svg>
       </control-button>
     </control>
-    <audio src="https://radio.laapl.ru/stream" hidden></audio>
+    <audio hidden></audio>
   </body>
 </html>
