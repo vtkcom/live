@@ -6,9 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <!-- Для Android: делаем прозрачным -->
-    <meta name="theme-color" content="transparent" />
-    <!-- Для iOS: включаем полноэкранный режим и прозрачный статус-бар -->
+    <meta name="theme-color" content="#000000" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
@@ -62,5 +60,10 @@
       </control-button>
     </control>
     <audio hidden></audio>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js");
+      }
+    </script>
   </body>
 </html>
