@@ -3,6 +3,7 @@
   "short_name": "Radio",
   "start_url": ".",
   "display": "standalone",
+  "theme_color": "#00000000",
   "background_color": "#000000",
   "description": "Radio undeground",
   "icons": [
