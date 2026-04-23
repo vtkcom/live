@@ -1,7 +1,7 @@
 {
-  "name": "Radio undeground",
+  "name": "Radio underground",
   "short_name": "Radio",
-  "description": "Live music from russia undeground",
+  "description": "Live music from russia underground",
   "start_url": ".",
   "display_override": ["window-controls-overlay"],
   "display": "standalone",

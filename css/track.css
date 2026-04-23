@@ -1,19 +1,19 @@
 track-info {
-  color: #fff;
-  filter: var(--drop-shadow);
+  color: var(--color);
   display: grid;
   place-items: center;
   gap: 0.5rem;
-}
-
-track-info > div {
-  text-align: center;
-}
-
-track-artist,
-track-title {
   font-size: 1.5rem;
   font-weight: 600;
+
+  & > div {
+    text-align: center;
+    filter: var(--drop-shadow);
+  }
+
+  & > div:first-child {
+    font-size: 1rem;
+  }
 }
 
 track-block {

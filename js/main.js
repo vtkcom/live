@@ -1,12 +1,27 @@
-import { loadInfo } from "./load.js";
+import { loadInfo } from "./services/load.js";
+import { getUrl } from "./utils/getUrl.js";
 
-const button = document.querySelector("control-button");
-const audio = document.querySelector("audio");
+const audio = new Audio();
+const button = document.querySelector("control svg");
 const volume = document.querySelector("volume input");
+
+audio.addEventListener("error", handleError);
+
+audio.addEventListener("stalled", () => {
+  console.log("Загрузка потока остановлена");
+});
+
+function handleError(e) {
+  if (audio.error) {
+    console.log(`Код ошибки: ${audio.error.code}`);
+    console.log(`Сообщение: ${audio.error.message}`);
+  }
+}
 
 button.addEventListener("click", () => {
   audio.src = "";
-  audio.src = "https://radio.laapl.ru/stream";
+  audio.load();
+  audio.src = getUrl("stream");
   audio.play();
 });
 

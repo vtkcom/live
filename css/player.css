@@ -3,9 +3,27 @@ player {
   display: block;
   width: 15rem;
   height: 15rem;
-  left: -2rem;
+  transform: translate3d(-2rem, 0, 0);
 
-  img {
+  & control {
+    background-color: hsla(0, 0%, 0%, 0.3);
+    backdrop-filter: blur(5px);
+    display: grid;
+    place-items: center;
+    position: absolute;
+    inset: -1px;
+    z-index: 4;
+
+    & svg {
+      width: 7rem;
+      height: 7rem;
+      color: var(--color);
+      filter: var(--drop-shadow);
+      cursor: pointer;
+    }
+  }
+
+  & img {
     position: relative;
     width: 15rem;
     height: 15rem;
@@ -15,7 +33,7 @@ player {
     z-index: 3;
   }
 
-  div {
+  & div {
     display: grid;
     place-items: center;
     width: 14rem;
@@ -27,6 +45,7 @@ player {
     position: absolute;
     top: 0.5rem;
     z-index: 1;
+    transform: translate3d(0rem, 0, 0);
 
     &::after {
       content: "";

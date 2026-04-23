@@ -1,58 +1,58 @@
 @keyframes outBlock {
   from {
-    transform: translate(0, 0);
-    filter: opacity(1);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
   to {
-    transform: translate(0, -3rem);
-    filter: opacity(0);
+    transform: translate3d(0, -3rem, 0);
+    opacity: 0;
   }
 }
 
 @keyframes inBlock {
   from {
-    transform: translate(0, -3rem);
-    filter: opacity(0);
+    transform: translate3d(0, -3rem, 0);
+    opacity: 0;
   }
   to {
-    transform: translate(0, 0);
-    filter: opacity(1);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
 
 @keyframes outCover {
   from {
-    left: -2rem;
+    transform: translate3d(-2rem, 0, 0);
   }
   to {
-    left: 0rem;
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes inCover {
   from {
-    left: 0rem;
+    transform: translate3d(0, 0, 0);
   }
   to {
-    left: -2rem;
+    transform: translate3d(-2rem, 0, 0);
   }
 }
 
 @keyframes outDisc {
   from {
-    right: -5rem;
+    transform: translate3d(0, 0, 0);
   }
   to {
-    right: 1rem;
+    transform: translate3d(-5rem, 0, 0);
   }
 }
 
 @keyframes inDisc {
   from {
-    right: 1rem;
+    transform: translate3d(-5rem, 0, 0);
   }
   to {
-    right: -5rem;
+    transform: translate3d(0, 0, 0);
   }
 }
 

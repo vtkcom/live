@@ -1,4 +1,4 @@
-export function updateMediaSession(data, imageUrl) {
+export function updateMediaSession(data, imageUrl, mime) {
   if ("mediaSession" in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: data.currentTrack.title,
@@ -7,7 +7,7 @@ export function updateMediaSession(data, imageUrl) {
       artwork: [
         {
           src: imageUrl,
-          type: data.currentTrack.image.mime,
+          type: mime,
         },
       ],
     });
