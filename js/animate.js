@@ -1,4 +1,3 @@
-
 export async function outAnimation() {
   return new Promise((res, rej) => {
     const cover = document.querySelector("player");
@@ -23,9 +22,11 @@ export async function inAnimation() {
     cover.style.animation = "inCover 0.5s";
     disk.style.animation = "inDisc 0.5s";
 
-    trackBlock.addEventListener("animationend", () => {
-      disk.style.animation = "circle 2s infinite linear";
-      res();
-    });
+    trackBlock.addEventListener("animationend", res);
   });
+}
+
+export function circle() {
+  const disk = document.querySelector("player div");
+  disk.style.animation = "circle 2s infinite linear";
 }

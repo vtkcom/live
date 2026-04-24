@@ -45,8 +45,9 @@ body {
   background-image: var(--gradient);
   background-size: 200% 200%;
   animation: gradientShift 60s linear infinite;
-  padding: env(safe-area-inset-top, 1rem) 1rem env(safe-area-inset-bottom, 1rem)
-    1rem;
+  padding: 1rem;
+  /* padding: env(safe-area-inset-top, 1rem) 1rem env(safe-area-inset-bottom, 1rem)
+    1rem; */
 
   &::before {
     content: "";

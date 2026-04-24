@@ -3,15 +3,13 @@ player {
   display: block;
   width: 15rem;
   height: 15rem;
-  transform: translate3d(-2rem, 0, 0);
+  transition: all 0.3s;
 
   & control {
-    background-color: hsla(0, 0%, 0%, 0.3);
-    backdrop-filter: blur(5px);
     display: grid;
     place-items: center;
     position: absolute;
-    inset: -1px;
+    inset: 0;
     z-index: 4;
 
     & svg {
@@ -29,7 +27,7 @@ player {
     height: 15rem;
     object-fit: cover;
     object-position: center;
-    box-shadow: 0 0 30px -10px hsl(0 0 0 / 0.3);
+    filter: var(--drop-shadow);
     z-index: 3;
   }
 
@@ -38,7 +36,7 @@ player {
     place-items: center;
     width: 14rem;
     height: 14rem;
-    right: -5rem;
+    right: 0;
     background-image: url(../img/tape.png);
     background-size: cover;
     background-position: center;
@@ -57,6 +55,16 @@ player {
       background-size: cover;
       background-position: center;
       border-radius: 50%;
+    }
+  }
+}
+
+html[playing] {
+  & player {
+    transform: translate3d(-2rem, 0, 0);
+
+    & div {
+      right: -5rem;
     }
   }
 }

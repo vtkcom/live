@@ -1,9 +1,11 @@
-import { loadInfo } from "./services/load.js";
+import { getState } from "./services/getState.js";
+import { getQueue } from "./services/getQueue.js";
 import { getUrl } from "./utils/getUrl.js";
 
 const audio = new Audio();
 const button = document.querySelector("control svg");
 const volume = document.querySelector("volume input");
+window.index = null;
 
 audio.addEventListener("error", handleError);
 
@@ -31,12 +33,14 @@ volume.addEventListener("input", (e) => {
 
 audio.addEventListener("pause", (e) => {
   document.querySelector("control").style.display = null;
+  document.documentElement.removeAttribute('playing')
 });
 
 audio.addEventListener("play", (e) => {
   document.querySelector("control").style.display = "none";
+  document.documentElement.setAttribute('playing', '')
 });
 
-loadInfo();
+getQueue(window.index);
 
-setInterval(loadInfo, 3 * 1000);
+setInterval(() => getQueue(window.index), 1 * 1000);
