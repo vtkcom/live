@@ -1,0 +1,18 @@
+error {
+  position: fixed;
+  z-index: 5;
+  inset: 0;
+  background-color: black;
+  color: var(--color);
+  display: grid;
+  place-content: center;
+  place-items: center;
+  padding: 1rem;
+
+  svg {
+    filter: var(--drop-shadow);
+    cursor: pointer;
+    width: 7rem;
+    height: 7rem;
+  }
+}

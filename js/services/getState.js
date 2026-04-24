@@ -26,6 +26,6 @@ export async function getState() {
 
   if (isLoading) {
     isLoading = false;
-    document.querySelector("loader").style.visibility = "hidden";
+    document.querySelector("loader").style.display = 'none';
   }
 }

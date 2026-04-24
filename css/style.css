@@ -4,6 +4,7 @@
 @import url("./volume.css");
 @import url("./player.css");
 @import url("./track.css");
+@import url("./error.css");
 
 :root {
   --color: hsl(0, 0%, 100%);
@@ -19,6 +20,7 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,

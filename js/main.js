@@ -3,9 +3,10 @@ import { getQueue } from "./services/getQueue.js";
 import { getUrl } from "./utils/getUrl.js";
 
 const audio = new Audio();
-const button = document.querySelector("control svg");
 const volume = document.querySelector("volume input");
-window.index = null;
+const playButton = document.querySelector("control svg");
+const reloadButton = document.querySelector("error svg");
+let index = null;
 
 audio.addEventListener("error", handleError);
 
@@ -13,19 +14,22 @@ audio.addEventListener("stalled", () => {
   console.log("Загрузка потока остановлена");
 });
 
-function handleError(e) {
-  if (audio.error) {
-    console.log(`Код ошибки: ${audio.error.code}`);
-    console.log(`Сообщение: ${audio.error.message}`);
-  }
-}
-
-button.addEventListener("click", () => {
+function reloadStream() {
   audio.src = "";
   audio.load();
   audio.src = getUrl("stream");
   audio.play();
-});
+  document.querySelector("error").style.display = "none";
+}
+
+function handleError(e) {
+  if (audio.error) {
+    document.querySelector("error").style.display = null;
+  }
+}
+
+playButton.addEventListener("click", reloadStream);
+reloadButton.addEventListener("click", reloadStream);
 
 volume.addEventListener("input", (e) => {
   audio.volume = e.target.value / 100;
@@ -33,14 +37,14 @@ volume.addEventListener("input", (e) => {
 
 audio.addEventListener("pause", (e) => {
   document.querySelector("control").style.display = null;
-  document.documentElement.removeAttribute('playing')
+  document.documentElement.removeAttribute("playing");
 });
 
 audio.addEventListener("play", (e) => {
   document.querySelector("control").style.display = "none";
-  document.documentElement.setAttribute('playing', '')
+  document.documentElement.setAttribute("playing", "");
 });
 
-getQueue(window.index);
+getQueue(index);
 
-setInterval(() => getQueue(window.index), 1 * 1000);
+setInterval(() => getQueue(index), 1 * 1000);
