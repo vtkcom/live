@@ -28,8 +28,17 @@ function handleError(e) {
   }
 }
 
-playButton.addEventListener("click", reloadStream);
-reloadButton.addEventListener("click", reloadStream);
+playButton.addEventListener("click", () => {
+  audio.src = "";
+  audio.load();
+  audio.src = getUrl("stream");
+  audio.play();
+  document.querySelector("error").style.display = "none";
+});
+
+reloadButton.addEventListener("click", () => {
+  location.reload();
+});
 
 volume.addEventListener("input", (e) => {
   audio.volume = e.target.value / 100;
